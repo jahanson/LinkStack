@@ -5,6 +5,9 @@
 /storage/*.key
 /vendor
 .env
+*.sqlite
+*.sqlite3
+*.db
 .env.backup
 .phpunit.result.cache
 docker-compose.override.yml
