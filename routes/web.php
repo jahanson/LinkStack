@@ -26,7 +26,7 @@ use App\Models\User;
 if(file_exists(base_path('storage/app/ISINSTALLED'))){
   // generates new APP KEY if no one is set
   if(EnvEditor::getKey('APP_KEY')==''){try{Artisan::call('key:generate');} catch (exception $e) {}}
- 
+
   // copies template meta config if none is present
   if(!file_exists(base_path("config/advanced-config.php"))){copy(base_path('storage/templates/advanced-config.php'), base_path('config/advanced-config.php'));}
  }
@@ -168,7 +168,7 @@ Route::group([
     Route::post('/admin/pages', [AdminController::class, 'editSitePage'])->name('editSitePage');
     Route::get('/admin/advanced-config', [AdminController::class, 'showFileEditor'])->name('showFileEditor');
     Route::post('/admin/advanced-config', [AdminController::class, 'editAC'])->name('editAC');
-    Route::get('/admin/env', [AdminController::class, 'showFileEditor'])->name('showFileEditor');
+    Route::get('/admin/env', [AdminController::class, 'showFileEditor'])->name('showFileEditorEnv');
     Route::post('/admin/env', [AdminController::class, 'editENV'])->name('editENV');
     Route::get('/admin/site', [AdminController::class, 'showSite'])->name('showSite');
     Route::post('/admin/site', [AdminController::class, 'editSite'])->name('editSite');
