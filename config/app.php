@@ -1,12 +1,7 @@
 <?php
 
-function locales($key, $default)
-{
-    $value = env($key, $default);
-    $array = explode(',', $value);
-    $trimmedArray = array_map('trim', $array);
-    return $trimmedArray;
-}
+// Ensure helper functions are loaded before using locales()
+require_once base_path('app/Functions/functions.php');
 
 return [
 

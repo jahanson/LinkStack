@@ -48,16 +48,16 @@ function findBackground($name)
 function analyzeImageBrightness($file) {
     try {
     $file = base_path('assets/img/background-img/'.$file);
-  
+
     // Get image information using getimagesize
     $imageInfo = getimagesize($file);
     if (!$imageInfo) {
       return 'dark';
     }
-  
+
     // Get the image type
     $type = $imageInfo[2];
-  
+
     // Load the image based on its type
     switch ($type) {
       case IMAGETYPE_JPEG:
@@ -70,11 +70,11 @@ function analyzeImageBrightness($file) {
       default:
         return 'dark';
     }
-  
+
     // Get image dimensions
     $width = imagesx($img);
     $height = imagesy($img);
-  
+
     // Calculate the average brightness of the image
     $total_brightness = 0;
     for ($x=0; $x<$width; $x++) {
@@ -88,7 +88,7 @@ function analyzeImageBrightness($file) {
       }
     }
     $avg_brightness = $total_brightness / ($width * $height);
-  
+
     // Determine if the image is more dark or light
     if ($avg_brightness < 128) {
       return 'dark';
@@ -99,7 +99,7 @@ function analyzeImageBrightness($file) {
           return null;
       }
   }
-  
+
   function infoIcon($tip) {
     echo '
       <div class="d-flex justify-content-center align-items-center">
@@ -192,4 +192,12 @@ function block_text($text) {
 
 function bt($text) {
   return block_text($text);
+}
+
+function locales($key, $default)
+{
+    $value = env($key, $default);
+    $array = explode(',', $value);
+    $trimmedArray = array_map('trim', $array);
+    return $trimmedArray;
 }
